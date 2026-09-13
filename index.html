@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bachcha ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night: #14051f;
+    --night-2: #23103a;
+    --plum: #3a1650;
+    --gold: #d9b46a;
+    --blush: #e8a3ab;
+    --cream: #f6ecdf;
+    --cream-dim: rgba(246,236,223,0.7);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: radial-gradient(ellipse at 50% 0%, var(--plum) 0%, var(--night-2) 45%, var(--night) 100%);
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  ::selection{ background: var(--gold); color: var(--night); }
+
+  /* Starfield */
+  #stars{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+  }
+  .star{
+    position:absolute; background:var(--cream); border-radius:50%; opacity:0.6;
+    animation: twinkle 3.5s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0.15;}
+    50%{opacity:0.9;}
+  }
+
+  /* ---------- Landing ---------- */
+  #landing{
+    position:relative; z-index:2;
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding: 8vh 6vw; cursor:pointer;
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  #landing.hide{ opacity:0; transform: scale(1.08); pointer-events:none; }
+
+  .eyebrow-heart{ font-size: 2rem; margin-bottom: 0.4rem; }
+
+  h1.title{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size: clamp(2.6rem, 9vw, 5rem);
+    line-height:1.05;
+    margin: 0 0 0.6rem 0;
+    color: var(--cream);
+    text-shadow: 0 0 40px rgba(217,180,106,0.35);
+  }
+  .title em{
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .enter-hint{
+    margin-top: 3rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    color: var(--cream-dim);
+    display:flex; align-items:center; gap:0.6rem;
+  }
+  .enter-hint .pulse-heart{
+    display:inline-block; animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ transform: scale(1); }
+    50%{ transform: scale(1.25); }
+  }
+
+  /* ---------- Main content ---------- */
+  #main{
+    position:relative; z-index:2;
+    max-width: 720px; margin: 0 auto; padding: 10vh 6vw 8vh;
+    opacity:0; transform: translateY(30px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+  #main.show{ opacity:1; transform:translateY(0); }
+
+  .section{ margin-bottom: 4.5rem; }
+
+  h2.section-title{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .message{
+    font-family:'Cormorant Garamond', serif;
+    font-size: clamp(1.25rem, 3.4vw, 1.6rem);
+    line-height: 1.6;
+    color: var(--cream);
+  }
+  .message .signoff{
+    display:block; margin-top: 1.6rem; color: var(--blush); font-style: italic;
+  }
+
+  /* Gallery */
+  .gallery{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .gallery figure{
+    margin:0; overflow:hidden; border-radius: 4px;
+    position:relative;
+    aspect-ratio: 3/4;
+    background: var(--night-2);
+  }
+  .gallery img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    filter: saturate(0.92) contrast(1.02);
+    transition: transform 0.6s ease;
+  }
+  .gallery figure:nth-child(3n){ grid-column: span 2; aspect-ratio: 16/10; }
+  .gallery figure:hover img{ transform: scale(1.04); }
+  .gallery figure::after{
+    content:""; position:absolute; inset:0;
+    box-shadow: inset 0 0 0 1px rgba(217,180,106,0.25);
+    pointer-events:none;
+  }
+
+  /* Song player */
+  .song-card{
+    border: 1px solid rgba(217,180,106,0.3);
+    border-radius: 6px;
+    padding: 1.4rem;
+    background: rgba(255,255,255,0.03);
+  }
+  .song-label{
+    font-size:0.8rem; letter-spacing:0.03em; color: var(--cream-dim); margin-bottom:0.3rem;
+  }
+  .song-name{
+    font-family:'Cormorant Garamond', serif; font-size:1.6rem; color:var(--cream); margin-bottom:1rem;
+  }
+  .song-name span{ color: var(--gold); }
+  .video-wrap{
+    position:relative; width:100%; padding-top:56.25%; border-radius:4px; overflow:hidden;
+  }
+  .video-wrap iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
+
+  footer{
+    text-align:center; padding: 2rem 0 4rem; position:relative; z-index:2;
+    color: var(--cream-dim); font-size:0.85rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .star, .pulse-heart{ animation:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<div id="landing">
+  <div class="eyebrow-heart">💗</div>
+  <h1 class="title">Happy Birthday<br><em>Bachcha</em></h1>
+  <div class="enter-hint"><span class="pulse-heart">💕</span> Click to Enter Our World <span class="pulse-heart">💕</span></div>
+</div>
+
+<div id="main">
+
+  <div class="section">
+    <h2 class="section-title">Hi Bachcha</h2>
+    <p class="message">
+      Happy Birthday to the girl who makes every ordinary day feel be‑intehaan — without limits, without end.
+      Aaj ka din sirf tumhare liye hai. Hasti raho, khush raho, aur tumhari har nayi subah ek khoobsurat yaad lekar aaye.
+      <span class="signoff">13 September 2011 • Tumhara hi ho ke ❤</span>
+    </p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Our Moments</h2>
+    <div class="gallery">
+      <figure><img src="images/photo1.jpg" alt="Bachcha"></figure>
+      <figure><img src="images/photo3.jpg" alt="Bachcha"></figure>
+      <figure><img src="images/photo5.jpg" alt="Bachcha"></figure>
+      <figure><img src="images/photo6.jpg" alt="Us"></figure>
+      <figure><img src="images/photo7.jpg" alt="Us"></figure>
+      <figure><img src="images/photo2.jpg" alt="Bachcha"></figure>
+      <figure><img src="images/photo1.jpg" alt="Bachcha"></figure>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Our Song</h2>
+    <div class="song-card">
+      <div class="song-label">Playing for you</div>
+      <div class="song-name">Be <span>Intehaan</span> — Atif Aslam</div>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed?listType=search&list=Be+Intehaan+Atif+Aslam+Sunidhi+Chauhan&autoplay=0"
+          title="Be Intehaan - Atif Aslam"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>made with 💗 for Bachcha</footer>
+
+<script>
+  // starfield
+  const starsContainer = document.getElementById('stars');
+  const STAR_COUNT = 60;
+  for(let i=0;i<STAR_COUNT;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random()*2 + 1;
+    s.style.width = size+'px';
+    s.style.height = size+'px';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*100+'%';
+    s.style.animationDelay = (Math.random()*3.5)+'s';
+    starsContainer.appendChild(s);
+  }
+
+  // click to enter
+  const landing = document.getElementById('landing');
+  const main = document.getElementById('main');
+  landing.addEventListener('click', () => {
+    landing.classList.add('hide');
+    setTimeout(() => {
+      landing.style.display = 'none';
+      main.classList.add('show');
+      window.scrollTo({top:0, behavior:'instant'});
+    }, 900);
+  });
+</script>
+
+</body>
+</html>
